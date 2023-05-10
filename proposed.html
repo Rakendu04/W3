@@ -31,7 +31,7 @@
              in which the client says what he can take, and the server decides what to give him. 
              One imagines that each function would return a status, as well as information specified below.<br>
             When running over a byte stream protocol, SGML would be an encoding possibility (as well as ASN/1 etc).<br>
-            GET document_name <a href="file:///C:/Users/sreer/OneDrive/Desktop/learnPython/.vscode/htro.html">HTRO</a>.<br>
+            GET document_name <a href="./htro.html">HTRO</a>.<br>
             &nbsp; Please transfer a named document back. Transfer the results back in a standard format or one which I have 
             said I can accept.<br>
             Request<br>
@@ -46,7 +46,7 @@
                 BEFORE datetime<br>
         &nbsp; For a search, refer to documents before this date only.
             ACCEPT format penalty
-        &nbsp; I can accept the given formats. The <a href="file:///C:/Users/sreer/OneDrive/Desktop/learnPython/.vscode/penalty.html"> penalty</a> 
+        &nbsp; I can accept the given formats. The penalty
                 is a set of numbers giving an estimate of the data degradation and elapsed time 
                 penalty which would be suffered at the CLIENT end by data being received in the way.
                 Gateways may add or modify these fields.<br>
@@ -58,8 +58,7 @@
         &nbsp; Like GET, but get only header information. One would have to decide whether the header
             should be in SGML or in protocol format (e.g. RPC parameters or internet mail header
             format). The function of this would be to allow overviews and simple indexes to be built
-            without having to retrieve the whole document. See the 
-            <a href="./RFC977.html">RFC977</a>
+            without having to retrieve the whole document. 
              HEAD command. The process of generation of the header of a document from the source (if
             that is how it is derived) is subject to the same possibilties (caching, etc) as a format
              convertion from the source.<br>
