@@ -1,0 +1,123 @@
+<html>
+    <head>
+       <h1> HyperText Transfer Protocol</h1>
+    </head>
+    <body>
+        See also:
+        <ul>
+            <li><a href="file:///C:/Users/sreer/OneDrive/Desktop/learnPython/.vscode/wanp.html">Why a new protocol?</a></li>
+            <li><a href="file:///C:/Users/sreer/OneDrive/Desktop/learnPython/.vscode/opu.html">Other protocols used</a></li>
+            <li>The HTTP protocol as <a href="file:///C:/Users/sreer/OneDrive/Desktop/learnPython/.vscode/opu.html">currently implemented</a></li>
+            <li><a href="file:///C:/Users/sreer/OneDrive/Desktop/learnPython/.vscode/pdi.html">Protocol design issues</a></li>
+        </ul>
+        <p>
+            The definition of this protocol is in the public domain(see <a href="file:///C:/Users/sreer/OneDrive/Desktop/learnPython/.vscode/policy.html">policy</a>).
+        </p>
+        <h2> Underlying protocol</h2>
+        <p>
+        Current HTTP uses ASCII transmission over a telnet-style internet protocol, to make it
+         simple to program, so that it will catch on: conversion to run over an OSI stack will
+          be simple as the structure of the messages is well defined.
+        </p>
+        <h2>Idempotent</h2>
+        <p>
+            This protocol is stateless, in that no state is kept by the server onn behalf of the client.
+            (This does not rule out caching by the server internally.)
+        </p>
+        <h2>Request: Information transferred from client</h2>
+        <p>
+            Parameters below, however represented on the network, are given in upper case, with 
+            parameter names in lower case. This set assumes a model of format negociation in which
+             in which the client says what he can take, and the server decides what to give him. 
+             One imagines that each function would return a status, as well as information specified below.<br>
+            When running over a byte stream protocol, SGML would be an encoding possibility (as well as ASN/1 etc).<br>
+            GET document_name <a href="file:///C:/Users/sreer/OneDrive/Desktop/learnPython/.vscode/htro.html">HTRO</a>.<br>
+            &nbsp; Please transfer a named document back. Transfer the results back in a standard format or one which I have 
+            said I can accept.<br>
+            Request<br>
+            SEARCH keywords<br>
+        &nbsp; Please search the given index document for all items with the given word combination, and
+             transfer the results back as marked up hypertext. This could elaborate to an SQL query.
+              There are many advantages in making the search criterion just a subset of the document
+               name space.<br>
+            SINCE datetime<br>
+        &nbsp; For a search, refer to documents only dated on or after this date. Used typically
+                for building a journal, or for incremental update of indexes and maps of the web.<br>
+                BEFORE datetime<br>
+        &nbsp; For a search, refer to documents before this date only.
+            ACCEPT format penalty
+        &nbsp; I can accept the given formats. The <a href="file:///C:/Users/sreer/OneDrive/Desktop/learnPython/.vscode/penalty.html"> penalty</a> 
+                is a set of numbers giving an estimate of the data degradation and elapsed time 
+                penalty which would be suffered at the CLIENT end by data being received in the way.
+                Gateways may add or modify these fields.<br>
+            PORT<br>
+        &nbsp; We could change the default so that if the port command is not specified,
+        then data must be sent back down the same link. In an idempotent world, this information 
+        would be included in the GET command.<br>
+            HEAD doc<br>
+        &nbsp; Like GET, but get only header information. One would have to decide whether the header
+            should be in SGML or in protocol format (e.g. RPC parameters or internet mail header
+            format). The function of this would be to allow overviews and simple indexes to be built
+            without having to retrieve the whole document. See the 
+            <a href="file:///C:/Users/sreer/OneDrive/Desktop/learnPython/.vscode/RFC977.html">RFC977</a>
+             HEAD command. The process of generation of the header of a document from the source (if
+            that is how it is derived) is subject to the same possibilties (caching, etc) as a format
+             convertion from the source.<br>
+            USER id<br>
+        &nbsp; The user name for logging purposes, preferably a mail address. Not for authentication 
+            unless no other authentication is given.<br>
+            AUTHORITY authentication<br>
+        &nbsp; A string to be passed across transparently. The protocol is open to the authentication 
+        system used.<br> 
+            HOST<br>
+        &nbsp; The calling host name - useful when the host is not properly registered with the
+        name server.<br>
+            Client Software<br>
+        &nbsp; For interest only, the application name and version number of the client software. 
+        These values should be preserved by the gateways.<br>
+        </p>
+        <h2>Response</h2>
+        <p> Suppose the response is an SGML document, with the document type a function
+            of the status.(<a href="file:///C:/Users/sreer/OneDrive/Desktop/learnPython/.vscode/Example.html">Example</a>)
+            Status<br>
+        &nbsp; A status is required in machine-readable format. See the 3-figure status codes of 
+        FTP for example. Bad status codes should be accompanied by an explantory document, 
+        possible conianing links to futher information. A possibility would be to make an error
+         response a special SGML document type. Some special status codes are mentioned below .<br>
+            Format<br>
+        &nbsp; The format selected by the server<br>
+            Document<br>
+        &nbsp; The document in that format<br>
+        </p>
+        <h2> Status codes</h2>
+        <p>
+            Success<br>
+        &nbsp; Accompanied by format and document.<br>
+            Forward<br>
+        &nbsp; Accompanied by new address. The server indicates a new address to be used by the 
+        client for finding the document. the document may have moved, or the server may be a
+         name server.<br>
+            Need Authorisation<br>
+        &nbsp; The authorisation is not sufficient. Accompanied by the address prefix for which
+         authorisation is required. The browser should obtain authoisation, and use it every time
+          a request is made for a document name matching that prefix.<br>
+            Refused<br>
+        &nbsp; Access has been refused. Sending (more) authorization won't help.<br>
+            Bad document name<br>
+        &nbsp; The document name did not refer to a valid document.<br>
+            Server failure<br>
+        &nbsp; Not the client's fault. Accompanied by a natural language explanation.<br>
+            Not available now<br>
+        &nbsp; Temporary problem - trying at a later time might help. This does not imply anything
+         about the document name and authorisation being valid. Accompaned by a natural language
+          explaination.<br>
+            Search fail<br>
+        &nbsp;    Accompanied by a HTML hit-list without any hits, but possibly containing a 
+        natural explanation.<br>
+        <br>
+        <br>
+        _______________________________________________________________<br>
+        <a href="file:///C:/Users/sreer/OneDrive/Desktop/learnPython/.vscode/Tim_BL.html">Tim BL</a>
+        </p>
+    </body>
+</html> 
